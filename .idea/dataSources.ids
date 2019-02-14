@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - spring_security_app@localhost" uuid="ab63ace9-da20-4e3b-a708-1cf05cd2d40c">
+    <database-info product="MySQL" version="5.7.18-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="spring_security_app"/>
+    <table name="roles" schema="" catalog="spring_security_app" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="user_roles_ibfk_2" table="user_roles" schema="" catalog="spring_security_app" columns="role_id"/>
+    </table>
+    <table name="user_roles" schema="" catalog="spring_security_app" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="user_roles_ibfk_1" columns="user_id" ref-table="users" ref-schema="" ref-catalog="spring_security_app" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="user_roles_ibfk_2" columns="role_id" ref-table="roles" ref-schema="" ref-catalog="spring_security_app" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="user_id" unique="true" columns="role_id"/>
+    </table>
+    <table name="users" schema="" catalog="spring_security_app" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="user_roles_ibfk_1" table="user_roles" schema="" catalog="spring_security_app" columns="user_id"/>
+    </table>
+  </data-source>
+</component>
